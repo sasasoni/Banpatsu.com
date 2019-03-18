@@ -1,24 +1,31 @@
-# README
+# Banpatsu.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+番発情報をサークル側が登録して、様々なサークルが開催する番発情報を集めることができるイベント管理アプリケーションです。
+今後も需要があったらアップデートをしていきます。
 
-Things you may want to cover:
+## 使い方
+ローカル環境で試してみたい方はリポジトリをクローンして以下の事を実行してください。
 
-* Ruby version
+gemのインストール
 
-* System dependencies
+```
+$ bundle install --without production
+```
 
-* Configuration
+データベースのマイグレーション
 
-* Database creation
+```
+$ rails db:migrate
+```
 
-* Database initialization
+テストの実行
 
-* How to run the test suite
+```
+$ rails test
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+テストをパスしたら、サーバーを起動
 
-* Deployment instructions
-
-* ...
+```
+$ rails s
+```
