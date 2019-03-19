@@ -3,7 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: "Example User", circle_name: "Examples", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+    @user = User.new(name: "Example User", circle_name: "Examples", email: "user@example.com", password: "foobar", password_confirmation: "foobar", profile: "This is profile.",
+    twitter_name: "sasasoni1119", site_url: "http://www.example.com")
   end
   # test "the truth" do
   #   assert true
@@ -52,9 +53,9 @@ class UserTest < ActiveSupport::TestCase
 
   test "email validation should reject invalid addresses" do
     invalid_addresses = %w[user@example,com user_at_foo.com user.name@example. foo@bar_baz.com foo@bar+baz.com]
-    invalid_addresses.each do |valid_address|
-      @user.email = valid_address
-      assert_not @user.valid?, "#{valid_address.inspect} should be valid"
+    invalid_addresses.each do |invalid_address|
+      @user.email = invalid_address
+      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
     end
   end
 
@@ -80,5 +81,23 @@ class UserTest < ActiveSupport::TestCase
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
+  end
+
+  test "site_url validation should accept valid urls" do
+    valid_urls = %w[http://utbc.jp https://utbc.jp/ http://www.fm-shibaya.com/ https://www.mubs-web.com/ https://ticklecode.com/honoka-install/ https://twitter.com/sasasoni1119]
+    valid_urls.each do |valid_url|
+      @user.site_url = valid_url
+      assert @user.valid?, "#{valid_url.inspect} shoud be valid"
+    end
+    @user.site_url = ' '
+    assert @user.valid?
+  end
+
+  test "site_url validation should reject invalid urls" do
+    invalid_urls = %w[http:/utbc.jp ftp://example.com http://www.fm-shibaya,com/ http://.com abc]
+    invalid_urls.each do |invalid_url|
+      @user.site_url = invalid_url
+      assert_not @user.valid?, "#{invalid_url.inspect} should be invalid"
+    end
   end
 end
