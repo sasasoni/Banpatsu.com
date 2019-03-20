@@ -1,0 +1,29 @@
+<%= provide(:title, @user.name) %>
+<% if @user.profile.blank? || @user.site_url.blank? %>
+  <div class="alert alert-info">
+    まだ全ての項目が設定されていません。<%= link_to "こちらから設定をしてください", "#" %>
+  </div>
+<% end %>
+
+<div class="row my-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        サークル情報
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= gravatar_for(@user, size: 50) %>
+          <%= @user.circle_name %>
+        </h4>
+        <p class="card-text">
+          <%= @user.profile %>
+        </p>
+        <h6 class="card-subtitle text-muted">サイトURL</h6>
+        <p class="card-text">
+          <%= @user.site_url %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
