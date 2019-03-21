@@ -1,5 +1,5 @@
 <%= provide(:title, @user.name) %>
-<% if @user.profile.blank? || @user.site_url.blank? %>
+<% if @user.profile.blank? || @user.site_url.blank? || @user.twitter_name.blank? %>
   <div class="alert alert-info">
     まだ全ての項目が設定されていません。<%= link_to "こちらから設定をしてください", "#" %>
   </div>
@@ -22,6 +22,10 @@
         <h6 class="card-subtitle text-muted">サイトURL</h6>
         <p class="card-text">
           <%= @user.site_url %>
+        </p>
+        <h6 class="card-subtitle text-muted">Twitter</h6>
+        <p class="card-text">
+          <%= @user.twitter_name %>
         </p>
       </div>
     </div>
