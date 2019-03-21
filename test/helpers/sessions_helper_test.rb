@@ -12,7 +12,7 @@ class SessionsHelperTest < ActionView::TestCase
   end
 
   test 'current_user returns nil when remember digest is wrong' do
-    # ユーザーに新しくremember_digestを代入すると、current_userはnilを返す
+    # ユーザーに改めてremember_digestを代入すると、current_userはnilを返す
     @user.update_attribute(:remember_digest, User.digest(User.new_token))
     assert_nil current_user
   end
