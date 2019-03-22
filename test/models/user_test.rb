@@ -89,8 +89,6 @@ class UserTest < ActiveSupport::TestCase
       @user.site_url = valid_url
       assert @user.valid?, "#{valid_url.inspect} shoud be valid"
     end
-    @user.site_url = ' '
-    assert @user.valid?
   end
 
   test "site_url validation should reject invalid urls" do
@@ -99,6 +97,8 @@ class UserTest < ActiveSupport::TestCase
       @user.site_url = invalid_url
       assert_not @user.valid?, "#{invalid_url.inspect} should be invalid"
     end
+    @user.site_url = ' '
+    assert_not @user.valid?
   end
 
   test "authenticated? should return false for a user with nil digest" do

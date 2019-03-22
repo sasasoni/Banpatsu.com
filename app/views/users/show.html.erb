@@ -1,5 +1,5 @@
 <%= provide(:title, @user.name) %>
-<% if @user.profile.blank? || @user.site_url.blank? || @user.twitter_name.blank? %>
+<% if current_user?(@user) && (@user.profile.blank? || @user.site_url.blank? || @user.twitter_name.blank?) %>
   <div class="alert alert-info">
     まだ全ての項目が設定されていません。<%= link_to "こちらから設定をしてください", "#" %>
   </div>

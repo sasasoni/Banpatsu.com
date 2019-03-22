@@ -34,6 +34,10 @@ gem 'momentjs-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'faker', '~> 1.9.3'
+gem 'will_paginate', '3.1.6'
+gem 'will_paginate-bootstrap4'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

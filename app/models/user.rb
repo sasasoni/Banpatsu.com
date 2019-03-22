@@ -8,10 +8,12 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :circle_name, presence: true, length: { maximum: 50 }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   VALID_URL_REGEX = /\Ahttps?:\/\/(www\.)?[\w\-]+\.[\w\.\/\-]+\z/i
   validates :site_url, format: { with: VALID_URL_REGEX },
-    unless: Proc.new { |u| u.site_url.blank? }
+    allow_nil: true
+    # unless: Proc.new { |u| u.site_url.blank? }
+    # allow_nil -> 空白時の例外処理
 
   has_secure_password
 
