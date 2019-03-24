@@ -1,0 +1,9 @@
+Hi, <%= @user.circle_name %>:)
+
+Banpatsu.com へようこそ！下記アドレスをクリックしてアカウントを有効化してください。
+
+<% if Rails.env.test? %>
+  <%= edit_account_activation_url(@user.activation_token, email: @user.email, host: "example.com") %>
+<% else %>
+  <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<% end %>

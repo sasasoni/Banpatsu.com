@@ -1,0 +1,13 @@
+<h1>Banpatsu.com</h1>
+
+<p>Hi, <%= @user.circle_name %>:)</p>
+
+<p>
+  ようこそ Banpatsu.com へ！ 下記のURLにアクセスしてアカウントを有効化してください
+</p>
+
+<% if Rails.env.test? %>
+  <%= link_to "Activate!", edit_account_activation_url(@user.activation_token, email: @user.email, host: "example.com") %>
+<% else %>
+  <%= link_to "Activate!", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<% end %>
