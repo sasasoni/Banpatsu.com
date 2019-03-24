@@ -9,6 +9,7 @@
       <%= f.text_field :name, class: "form-control" %>
 
       <%= f.label :password %>
+      <%= link_to "(パスワードを忘れた場合)", new_password_reset_path %>
       <%= f.password_field :password, class: "form-control" %>
 
       <div class="custom-control custom-checkbox mb-2">

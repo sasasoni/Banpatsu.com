@@ -43,7 +43,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with remembering" do
     log_in_as(@user, remember_me: '1')
     # テスト内ではcookies[:xxx]とできない...ってtutorialでは言ってたけど、5.2だとcookiesメソッドにシンボルがつかえるっぽい
-    # assigns(:user)メソッドを使うと使えるようになる assigns:直前に作られたインスタンス変数を取得
+    # assigns(:user)メソッドを使うと使えるようになる assigns:直前に作られたインスタンス変数を取得する→仮想プロパティにアクセスできる
     # assert_not_empty cookies[:remember_token]
     assert_equal cookies[:remember_token], assigns(:user).remember_token
     # assert_equal cookies[:remember_token], @user.remember_token
