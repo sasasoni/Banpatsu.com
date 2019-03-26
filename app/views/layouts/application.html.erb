@@ -11,12 +11,13 @@
     <%= render 'layouts/shim' %>
   </head>
 
-  <body>
+  <body data-turbolinks="false">
     <%= render 'layouts/header' %>
 
     <div class="container">
       <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <%# .html_safe or <%==(推奨) を付けることでmessageにタグを追加して拡張できる %>
+        <%== content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       <%= yield %>
     </div>

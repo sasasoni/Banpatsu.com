@@ -1,0 +1,10 @@
+<% provide(:title, "New event") %>
+<% provide(:button_text, "Create event!") %>
+<% provide(:url, new_event_path) %>
+<h1>New Event</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
+</div>

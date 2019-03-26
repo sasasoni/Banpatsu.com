@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :events, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -12,9 +13,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   VALID_URL_REGEX = /\Ahttps?:\/\/(www\.)?[\w\-]+\.[\w\.\/\-]+\z/i
   validates :site_url, format: { with: VALID_URL_REGEX },
-    allow_nil: true
-    # unless: Proc.new { |u| u.site_url.blank? }
-    # allow_nil -> 空白時の例外処理
+    unless: Proc.new { |u| u.site_url.blank? }
+    # 条件付きバリデーション: Proc内でサイトURLが存在した時に検証される
+    # allow_nil -> 空白時の例外処理 だとダメっぽい
 
   has_secure_password
 

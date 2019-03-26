@@ -1,5 +1,5 @@
 <%= form_for(@user, url: yield(:url)) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
@@ -10,23 +10,25 @@
   <%= f.label :circle_name %>
   <%= f.text_field :circle_name, class: "form-control" %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %>
-
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
-
-  <% if params[:action] == "edit" %>
+  <% if params[:action] == "edit" || params[:action] == "update" %>
     <%= f.label :profile, "紹介文" %>
     <%= f.text_area :profile, class: "form-control", rows: "3" %>
 
     <%= f.label :site_url, "自サイトURL" %>
-    <%= f.email_field :site_url, class: "form-control" %>
+    <%= f.text_field :site_url, class: "form-control" %>
 
     <%= f.label :twitter_name, "TwitterのID" %>
     <small class="form-text text-muted">Twitterアカウントをお持ちの場合、ID名を入力したらタイムラインが表示できます</small>
     <%= f.text_field :twitter_name, class: "form-control" %>
   <% end %>
+
+  <hr class="my-4">
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: "form-control" %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

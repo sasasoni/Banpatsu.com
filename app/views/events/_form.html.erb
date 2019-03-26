@@ -1,0 +1,31 @@
+<%= form_for(@event, url: yield(:url)) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :title, "イベントタイトル" %>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :description, "イベント概要" %>
+  <%= f.text_area :description, rows: 10, class: "form-control" %>
+
+  <%= f.label :start_date, "開始日" %>
+  <div class="form-group">
+    <%= f.datetime_select :start_date, {start_year: Time.current.year,
+      end_year: Time.current.year + 1, use_month_numbers: true}, class: "form-control date-select" %>
+  </div>
+  
+  <div class="custom-control custom-checkbox mb-2">
+    <%= f.check_box :no_expiration, checked: true, class: "custom-control-input" %>
+    <%= f.label :no_expiration, "終了日時を設定しない", class: "custom-control-label" %>
+  </div>
+  <%= f.label :end_date, "終了日" %>
+  <%# <small class="mx-2">複数日に行われる場合は入力してください</small> %>
+  <div class="form-group">
+    <%= f.datetime_select :end_date, {start_year: Time.current.year,
+      end_year: Time.current.year + 1, use_month_numbers: true}, class: "form-control date-select" %>
+  </div>
+
+  <%= f.label :event_url, "特設サイトURL" %>
+  <%= f.text_field :event_url, class: "form-control" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

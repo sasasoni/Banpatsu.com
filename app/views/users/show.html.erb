@@ -1,7 +1,7 @@
-<%= provide(:title, @user.name) %>
+<%= provide(:title, @user.circle_name) %>
 <% if current_user?(@user) && (@user.profile.blank? || @user.site_url.blank? || @user.twitter_name.blank?) %>
   <div class="alert alert-info">
-    まだ全ての項目が設定されていません。<%= link_to "こちらから設定をしてください", "#" %>
+    まだ全ての項目が設定されていません。<%= link_to "こちらから設定をしてください", edit_user_path(@user) %>
   </div>
 <% end %>
 
@@ -17,17 +17,41 @@
           <%= @user.circle_name %>
         </h4>
         <p class="card-text">
-          <%= @user.profile %>
+          <%= simple_format(@user.profile) %>
         </p>
-        <h6 class="card-subtitle text-muted">サイトURL</h6>
-        <p class="card-text">
-          <%= @user.site_url %>
-        </p>
-        <h6 class="card-subtitle text-muted">Twitter</h6>
-        <p class="card-text">
-          <%= @user.twitter_name %>
-        </p>
+        <% if !@user.site_url.blank? %>
+          <h6 class="card-subtitle text-muted">サイトURL</h6>
+          <p class="card-text">
+            <%= link_to "HPへ移動する", @user.site_url, target: "_blank" %>
+          </p>
+        <% end %>
+        <% if !@user.twitter_name.blank? %>
+          <h6 class="card-subtitle text-muted">Twitter</h6>
+          <p class="card-text">
+            <%= @user.twitter_name %>
+          </p>
+          <p class="card-text">
+            <a class="twitter-timeline" data-lang="ja" data-width="800" data-height="600" data-theme="light" data-link-color="#2B7BB9" data-chrome="nofooter" href="https://twitter.com/<%= @user.twitter_name %>?ref_src=twsrc%5Etfw">Tweets by pg_happi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </p>
+        <% end %>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row my-5">
+  <div class="col-md-12">
+    <h3>
+      Events
+      <% if current_user?(@user) %>
+        <span><%= link_to "Create event!", new_event_path, class: "btn btn-success" %></span>
+      <% end %>
+    </h3>
+    <% if @user.events.any? %>
+      <ol class="events">
+        <%= render @events %>
+      </ol>
+      <%= will_paginate @events %>
+    <% end %>
   </div>
 </div>

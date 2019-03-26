@@ -32,3 +32,16 @@ User.create!(
     activated_at: Time.zone.now
   )
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+  title = Faker::Lorem.sentence(5)
+  description = Faker::Lorem.sentence(20)
+  users.each do |user|
+    user.events.create!(
+      title: title,
+      description: description,
+      start_date: Time.current
+    )
+  end
+end

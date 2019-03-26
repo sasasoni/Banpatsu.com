@@ -1,0 +1,32 @@
+<li id="event-<%= event.id %>">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= event.title %>
+        <% if current_user?(event.user) %>
+          <small>
+            <%= link_to "Edit", edit_event_path(event) %> | 
+            <%= link_to "delete", event, method: :delete,
+              data: { confirm: "You sure?" } %>
+          </small>
+        <% end %>
+      </h4>
+      <h6 class="card-subtitle mb-2">
+        <% if expired?(event.start_date, event.end_date) %>
+          <span class="badge badge-info">このイベントは終了しました</span>
+        <% end %>
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted">by <%= link_to event.user.circle_name, event.user %><%= gravatar_for(event.user, size: 30) %></h6>
+      <p class="card-text">
+        <%= truncate event.description, length: 80 %><br>
+        <%= link_to "詳細はこちら", event %>
+      </p>
+      <p class="card-text">
+        開始日: <%= event.start_date.strftime("%Y/%m/%d %H:%M") %> ~ 
+        <% unless event.end_date.nil? %>
+          終了:<%= event.end_date.strftime("%Y/%m/%d %H:%M") %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</li>

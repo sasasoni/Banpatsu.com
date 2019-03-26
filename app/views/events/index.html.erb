@@ -1,0 +1,19 @@
+<% provide(:title, "Events") %>
+<h1 class="my-3">
+  直近に開催されるイベント
+  <% if current_user %>
+    <span><%= link_to "Create event!", new_event_path, class: "btn btn-success " %></span>
+  <% end %>
+</h1>
+
+<% if @events.any? %>
+  <%= will_paginate %>
+
+  <ul class="users mb-3">
+    <%= render @events %>
+  </ul>
+
+  <%= will_paginate %>
+<% else %>
+  <h4>直近に開催されるイベントはありません</h4>
+<% end %>

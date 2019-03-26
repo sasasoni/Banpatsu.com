@@ -1,0 +1,42 @@
+<%= provide(:title, @event.title) %>
+
+<div class="row my-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        イベント情報
+        <% if current_user?(@event.user) %>
+          <span><%= link_to "Edit", edit_event_path(@event) %></span> | 
+          <span><%= link_to "delete", @event, method: :delete,
+            data: { confirm: "You sure?" } %></span>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= @event.title %>
+          <% if expired?(@event.start_date, @event.end_date) %>
+            <span class="text-info">(このイベントは終了しました)</span>
+          <% end %>
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+          サークル名: <%= link_to @event.user.circle_name, @event.user %><%= gravatar_for(@event.user, size: 30) %>
+        </h6>
+        <p class="card-text">
+          開始: <%= @event.start_date.strftime("%Y/%m/%d %H:%M") %> ~ 
+          <% unless @event.end_date.nil? %>
+            終了:<%= @event.end_date.strftime("%Y/%m/%d %H:%M") %>
+          <% end %>
+        </p>
+        <p class="card-text">
+          <%== profile_text(@event.description) %>
+        </p>
+        <% if !@event.event_url.blank? %>
+          <h6 class="card-subtitle text-muted">特設サイトURL</h6>
+          <p class="card-text">
+            <%= link_to "HPへ移動する", @event.event_url, target: "_blank" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

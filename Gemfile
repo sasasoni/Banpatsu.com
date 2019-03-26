@@ -38,6 +38,8 @@ gem 'faker', '~> 1.9.3'
 gem 'will_paginate', '3.1.6'
 gem 'will_paginate-bootstrap4'
 
+gem 'rinku'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

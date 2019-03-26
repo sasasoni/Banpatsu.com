@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  get '/new_event', to: 'events#new'
+  post '/new_event', to: 'events#create'
+  resources :events do
+    get 'calendar', on: :collection
+    get 'search', on: :collection
+  end
 end
