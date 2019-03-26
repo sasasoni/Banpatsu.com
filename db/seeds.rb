@@ -39,9 +39,9 @@ users = User.order(:created_at).take(6)
   description = Faker::Lorem.sentence(20)
   users.each do |user|
     user.events.create!(
-      title: title,
+      title: "Test:" + title,
       description: description,
-      start_date: Time.current
+      start_date: Time.current.advance(days: rand(20))
     )
   end
 end
