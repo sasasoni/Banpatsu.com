@@ -70,6 +70,6 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
         user: { password: "foobar", password_confirmation: "foobar" } }
     assert_response :redirect
     follow_redirect!
-    assert_match /expired/i, response.body
+    assert_match /alert/i, response.body
   end
 end
