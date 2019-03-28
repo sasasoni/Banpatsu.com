@@ -23,7 +23,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/new'
     assert_select 'div#error_explanation'
     assert_select 'div.alert-danger'
-    assert_select 'li', "Name can't be blank"
+    assert_select 'li'
   end
 
   test "valid signup information with account activation" do

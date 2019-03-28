@@ -1,6 +1,10 @@
-<% provide(:title, "Events") %>
+<% provide(:title, "Search Result") %>
 <h1 class="my-3">
-  直近に開催されるイベント
+  <% if params[:q].present? %>
+    <%= params[:q] %>の検索結果(新着順)
+  <% else %>
+    新着イベント情報
+  <% end %>
   <% if current_user %>
     <span><%= link_to "Create event!", new_event_path, class: "btn btn-success " %></span>
   <% end %>
@@ -15,5 +19,5 @@
 
   <%= will_paginate %>
 <% else %>
-  <h4>直近に開催されるイベントはありません</h4>
+  <h4><%= params[:q] %>の検索結果は見つかりませんでした。。。</h4>
 <% end %>

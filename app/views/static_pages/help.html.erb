@@ -1,3 +1,91 @@
 <%= provide(:title, "Help") %>
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+
+<div class="row welcome text-center padding">
+  <div class="col-12">
+    <h1 class="display-5">Help</h1>
+  </div>
+  <hr>
+</div>
+
+<h2 class="mb-3">使い方</h2>
+<h3>イベントをお探しの方</h3>
+
+<div class="row padding">
+  <div class="col-12">
+    <p>
+      トップページのカレンダーより、直近に開催されるイベントが一目でわかります。気になるイベントがありましたらクリックして詳細確認ができます。<br>
+      また、トップページから
+    </p>
+  </div>
+</div>
+<div class="row padding">
+  <div class="col-md-6">
+    <p>
+      イベントの詳細画面内にはツイートボタンがあり、ここから番発情報をシェアできます。
+    </p>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag("help/show_sample.png", alt: "show_sample", class: "help") %>
+  </div>
+</div>
+<div class="row padding">
+  <div class="col-md-6">
+    <p>
+      ページ上部の検索ボックスからタイトルまたはサークル名にマッチするイベントを<strong>新着順で</strong>検索できます。<br>
+      また、なにも入力せずに検索した場合、すべてのイベントを<strong>新着順で</strong>表示します。<br>
+      直近に開催されるイベントは、トップページのEventから探すことができます。
+    </p>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag("help/show_sample4.png", alt: "show_sample4", class: "help") %>
+  </div>
+</div>
+
+<h3>イベントを開催する方</h3>
+
+<div class="row">
+  <div class="col-12">
+    <p>
+      イベントを登録するには、アカウント登録が必要です。<br>
+      フォームにログインに利用するID、サークル名、メールアドレス、パスワードを記入すると入力したメールアドレス宛に確認メールが届きます。<span class="text-muted">(現在のシステムの仕様上メールが届くまでに時間がかかることがあります)</span><br>
+      メールに記載されたアドレスからアカウントを有効化してください。
+    </p>
+  </div>
+</div>
+<div class="row padding">
+  <div class="col-md-6">
+    <p>
+      アカウントを有効化した状態では、まだサークル情報の設定が完了していません。紹介文、サイトURL、Twitterのアカウント名(@から始まるヤツ)を入力してください。<br>
+      Twitterのアカウントが登録されると、プロフィール欄にあなたのタイムラインが埋め込まれます。
+    </p>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag("help/show_sample2.png", alt: "show_sample2", class: "help") %>
+  </div>
+</div>
+<div class="row padding">
+  <div class="col-md-6">
+    <p>
+      プロフィール写真は、<a href="https://ja.gravatar.com/" target="_blank">Gravatar</a>を利用しています。お手数ですが、プロフィール写真を変更する場合はGravatarの利用登録をお願いします。<br>
+      <span class="text-muted">(要望が多ければGravatarを使用せずプロフ写真をアップロードする機能をつけるかもです。)</span>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag("help/show_sample3.png", alt: "show_sample3", class: "help") %>
+  </div>
+</div>
+
+<hr>
+
+<h2 class="mb-3">お問い合わせ</h2>
+
+<div class="row">
+  <div class="col-12">
+    <p>
+      質問、ご要望、バグ報告がありましたら<br>
+      Twitter:<a href="https://twitter.com/sasasoni1119" target="_blank">@sasasoni1119</a><br>
+      またはemail:<a href="mailto:sasasoni1119@gmail.com">sasasoni1119@gmail.com</a><br>
+      までお送りください。Twitterのが早く反応します。
+    </p>
+  </div>
+</div>

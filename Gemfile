@@ -39,6 +39,9 @@ gem 'will_paginate', '3.1.6'
 gem 'will_paginate-bootstrap4'
 
 gem 'rinku'
+gem 'rails-i18n', '~> 5.1'
+
+gem 'google-analytics-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

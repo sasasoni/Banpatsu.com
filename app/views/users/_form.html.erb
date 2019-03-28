@@ -19,7 +19,12 @@
 
     <%= f.label :twitter_name, "TwitterのID" %>
     <small class="form-text text-muted">Twitterアカウントをお持ちの場合、ID名を入力したらタイムラインが表示できます</small>
-    <%= f.text_field :twitter_name, class: "form-control" %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+      <%= f.text_field :twitter_name, class: "form-control" %>
+    </div>
   <% end %>
 
   <hr class="my-4">

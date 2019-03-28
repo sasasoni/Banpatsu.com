@@ -31,3 +31,22 @@
 
 en:
   hello: "Hello world"
+  flash:
+    user:
+      created: Please check your email for activate account.
+      updated: Profile updated.
+      destroyed: User deleted.
+    session:
+      non_activated: Accont not activated. Check your email for the activation link.
+      login_invalid: Invalid username/password combination.
+    password_reset:
+      valid_email: Send your email for password reset.
+      invalid_email: Email not found:(
+      succeeded: Password has been reset.
+    account_activation:
+      activated: Account activated!
+      invalid: Invalid activation link:(
+    event:
+      created: Event created!
+      updated: Event updated!
+      destroyed: Event deleted!

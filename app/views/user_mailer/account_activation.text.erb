@@ -7,3 +7,5 @@ Banpatsu.com へようこそ！下記アドレスをクリックしてアカウ�
 <% else %>
   <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
 <% end %>
+
+あなたのユーザーIDは[<%= @user.name %>]です。ログインの時にこのIDが必要となります。パスワードと共に大切に保管してください。(ユーザーIDは変更が可能です。)

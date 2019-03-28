@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = @user.events.paginate(page: params[:page], per_page: 10)
+    @events = @user.events.most_recent.paginate(page: params[:page], per_page: 10)
     redirect_to root_url and return unless @user.activated?
   end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = "あなたのEメールをチェックしてアカウントの有効化を行ってください。"
+      flash[:info] = I18n.t("flash.user.created")
       redirect_to root_url
     else
       render 'new'
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = I18n.t("flash.user.updated")
       redirect_to @user
     else
       render 'edit'
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = I18n.t("flash.user.destroyed")
     redirect_to users_url
   end
 

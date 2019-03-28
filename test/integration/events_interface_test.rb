@@ -20,7 +20,7 @@ class EventsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     # 有効な送信
     title = "Title!"
-    description = "This is Title"
+    description = "This is Description"
     assert_difference 'Event.count' do
       post events_path, params: { event: {
         title: title,

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.nearest.paginate(page: params[:page])
+    @events = Event.nearest.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   def destroy
     Event.find(params[:id]).destroy
     flash[:success] = "Event deleted"
-    redirect_to request.referrer || current_user
+    redirect_to current_user
   end
 
   def calendar
@@ -55,8 +55,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.search(params[:q]).paginate(page: params[:page])
-    render 'index'
+    @events = Event.search(params[:q]).paginate(page: params[:page], per_page: 10)
   end
 
   private

@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
     render html: "hello, world!"
   end
 
+  if Rails.env.production? || ENV["RESCUE_EXCEPTIONS"]
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
+    rescue_from ActionController::RoutingError,   with: :rescue_not_found
+  end
+
   private
 
     def logged_in_user
@@ -14,5 +19,9 @@ class ApplicationController < ActionController::Base
         flash[:danger] = "Please Log in."
         redirect_to login_url
       end
+    end
+
+    def rescue_not_found(exception)
+      render 'errors/not_found', status: 404, formats: [:html]
     end
 end

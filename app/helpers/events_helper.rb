@@ -6,9 +6,4 @@ module EventsHelper
       end_date < Time.current
     end
   end
-
-  def profile_text(text)
-    # simple_formatではscriptタグを除去してくれるため、<%== %>, rawを使っても大丈夫そう
-    Rinku.auto_link(simple_format(text), :all, 'target="_blank"')
-  end
 end

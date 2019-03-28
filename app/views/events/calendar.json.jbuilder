@@ -1,5 +1,6 @@
 json.array!(@events) do |event|
-  json.extract! event, :id, :title, :description
+  json.extract! event, :id, :title
+  json.description truncate(event.description, length: 10)
   json.start event.start_date
   json.end event.end_date
   json.url event_url(event, format: :html)

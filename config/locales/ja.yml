@@ -1,0 +1,40 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー情報
+      event: イベント
+    attributes:
+      user:
+        name: ユーザーID
+        circle_name: サークル名
+        email: メールアドレス
+        profile: 紹介文
+        twitter_name: TwitterID
+        site_url: サイトURL
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      event:
+        title: タイトル
+        description: 説明文
+        event_url: 特設サイトURL
+        start_date: 開始日時
+        end_date: 終了日時
+  flash:
+    user:
+      created: あなたのEメールをチェックしてアカウントの有効化を行ってください。
+      updated: プロフィールを更新しました。
+      destroyed: ユーザーを削除しました。
+    session:
+      non_activated: アカウントが有効化されていません。 送信されたメールを確認してください。
+      login_invalid: ユーザーまたはパスワードが間違っています。
+    password_reset:
+      valid_email: Eメールを送信しました。添付されているURLからパスワードのリセットを行ってください。
+      invalid_email: Eメールアドレスが見つかりませんでした:(
+      succeeded: パスワードをリセットしました。
+    account_activation:
+      activated: アカウントを有効化しました。
+      invalid: アクティベーションリンクが無効です。
+    event:
+      created: イベントを作成しました。
+      updated: イベントを更新しました。
+      destroyed: イベントを削除しました。

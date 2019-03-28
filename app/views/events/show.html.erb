@@ -33,9 +33,16 @@
         <% if !@event.event_url.blank? %>
           <h6 class="card-subtitle text-muted">特設サイトURL</h6>
           <p class="card-text">
-            <%= link_to "HPへ移動する", @event.event_url, target: "_blank" %>
+            <%= link_to @event.event_url, @event.event_url, target: "_blank" %>
           </p>
         <% end %>
+        <p class="card-text">
+          <a href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-size="large" data-text="<%= @event.title %>が<%= @event.start_date.strftime("%Y/%m/%dの%H:%M") %>に始まるよ！詳細はこちら" data-url="https://banpatsu.herokuapp.com/events/<%= @event.id %>" data-lang="ja" data-show-count="false" data-hashtags="番発,番発ドットコム"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </p>
+        <p class="mb-0"><small class="text-muted">
+          作成日:<%= @event.created_at.strftime("%Y/%m/%d %H:%M") %> | 
+          更新日:<%= @event.updated_at.strftime("%Y/%m/%d %H:%M") %>
+        </small></p>
       </div>
     </div>
   </div>

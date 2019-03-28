@@ -136,6 +136,10 @@ footer{
   }
 }
 
+img.help{
+  width: 100%;
+  }
+
 
 // miscellaneous
 
@@ -168,9 +172,9 @@ input {
   }
 }
 
-// users index
+// users events index
 
-.users{
+.users,.events{
   list-style: none;
   margin: 0;
   li {
@@ -197,4 +201,45 @@ input {
 .date-select {
   width: auto;
   display: inline-block;
+}
+
+// other
+
+.padding {
+  padding-bottom: 2rem;
+}
+
+.welcome{
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.welcome hr{
+  border-top: 2px solid #b4b4b4;
+  width: 95%;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+}
+
+.contact-text .card-text{
+  line-height: 2rem;
+}
+
+.fa-twitter{
+  color: #00aced;
+}
+
+.fa-envelope{
+  color: #37d68c;
+}
+
+.fa-twitter:hover,
+.fa-envelope:hover{
+  color: #d5d5d5;
+}
+
+.contact-text a{
+  font-size: 1.5rem;
+  margin-left: 5px;
 }
