@@ -43,6 +43,7 @@ en:
       valid_email: Send your email for password reset.
       invalid_email: Email not found:(
       succeeded: Password has been reset.
+      expired: Password reset has expired.
     account_activation:
       activated: Account activated!
       invalid: Invalid activation link:(

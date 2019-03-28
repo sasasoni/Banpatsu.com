@@ -17,15 +17,17 @@
     <%= f.check_box :no_expiration, checked: true, class: "custom-control-input" %>
     <%= f.label :no_expiration, "終了日時を設定しない", class: "custom-control-label" %>
   </div>
-  <%= f.label :end_date, "終了日" %>
-  <%# <small class="mx-2">複数日に行われる場合は入力してください</small> %>
-  <div class="form-group">
-    <%= f.datetime_select :end_date, {start_year: Time.current.year,
-      end_year: Time.current.year + 1, use_month_numbers: true}, class: "form-control date-select" %>
+  <div id="event_end_date">
+    <%= f.label :end_date, "終了日" %>
+    <%# <small class="mx-2">複数日に行われる場合は入力してください</small> %>
+    <div class="form-group">
+      <%= f.datetime_select :end_date, {start_year: Time.current.year,
+        end_year: Time.current.year + 1, use_month_numbers: true}, class: "form-control date-select" %>
+    </div>
   </div>
 
   <%= f.label :event_url, "特設サイトURL" %>
-  <%= f.text_field :event_url, class: "form-control" %>
+  <%= f.text_field :event_url, class: "form-control", placeholder: "http|https://example.com" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

@@ -8,6 +8,9 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
   validates :start_date, presence: true
+  VALID_URL_REGEX = /\Ahttps?:\/\/[\w\-]+\.[\w\.\/\-]+\z/i
+  validates :event_url, format: { with: VALID_URL_REGEX },
+    unless: Proc.new { |u| u.event_url.blank? }
 
   # トップページのイベント表示
   scope :new_events, -> { order(updated_at: :desc).take(5) }

@@ -42,9 +42,9 @@
 <div class="row my-5">
   <div class="col-md-12">
     <h3>
-      Events
+      <%= @user.circle_name %>のイベント
       <% if current_user?(@user) %>
-        <span><%= link_to "Create event!", new_event_path, class: "btn btn-success" %></span>
+        <span><%= link_to "イベントを作る！", new_event_path, class: "btn btn-success" %></span>
       <% end %>
     </h3>
     <% if @user.events.any? %>
