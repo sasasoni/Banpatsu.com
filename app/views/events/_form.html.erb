@@ -5,7 +5,8 @@
   <%= f.text_field :title, class: "form-control" %>
 
   <%= f.label :description, "イベント概要" %>
-  <%= f.text_area :description, rows: 10, class: "form-control" %>
+  <button type="button" class="btn btn-link" data-toggle="modal" data-target="#description_info"><i class="fas fa-question-circle"></i></button>
+  <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "上の？マークから概要の描き方のヒントが見れます。" %>
 
   <%= f.label :start_date, "開始日" %>
   <div class="form-group">
@@ -31,3 +32,33 @@
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
+
+<div class="modal fade" id="description_info" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="descriptionModalLabel">イベント概要のヒント</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          イベント概要では、どんなことをするかの他に、どこで開催されるか、担当者の名前、番発であれば渉外担当のTwitterIDやメールアドレスを記載しておくことをお勧めします。<br>
+          また、URLやメールアドレスは自動的にリンクが付くので、開催場所はGoogleMap等の共有リンクを入れておくと良いでしょう。
+        </p>
+        <div class="row">
+          <div class="col-12">
+            <%= image_tag("help/modalInfo.png", alt: "modalInfo2", class: "help") %>
+          </div>
+          <div class="col-12">
+            <%= image_tag("help/modalInfo2.png", alt: "modalInfo2", class: "help") %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
