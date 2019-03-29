@@ -5,9 +5,6 @@
   <% else %>
     サークル一覧
   <% end %>
-  <% if current_user %>
-    <span><%= link_to "Create event!", new_event_path, class: "btn btn-success " %></span>
-  <% end %>
 </h1>
 
 <%= render 'search_form' %>
