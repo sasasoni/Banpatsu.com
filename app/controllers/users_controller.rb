@@ -50,6 +50,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def search
+    @users = User.search(params[:q_user]).paginate(page: params[:page], per_page: 10)
+  end
+
   private
     
     def user_params

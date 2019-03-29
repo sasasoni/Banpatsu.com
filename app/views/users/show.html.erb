@@ -48,7 +48,7 @@
       <% end %>
     </h3>
     <% if @user.events.any? %>
-      <ol class="events">
+      <ol class="events mb-3">
         <%= render @events %>
       </ol>
       <%= will_paginate @events %>

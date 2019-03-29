@@ -1,0 +1,25 @@
+<% provide(:title, "Search Result") %>
+<h1 class="my-3">
+  <% if params[:q_user].present? %>
+    <%= params[:q_user] %>の検索結果
+  <% else %>
+    サークル一覧
+  <% end %>
+  <% if current_user %>
+    <span><%= link_to "Create event!", new_event_path, class: "btn btn-success " %></span>
+  <% end %>
+</h1>
+
+<%= render 'search_form' %>
+
+<% if @users.any? %>
+  <%= will_paginate %>
+
+  <ul class="users mb-3">
+    <%= render @users %>
+  </ul>
+
+  <%= will_paginate %>
+<% else %>
+  <h4><%= params[:q_user] %>の検索結果は見つかりませんでした。。。</h4>
+<% end %>
