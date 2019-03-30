@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@BanpatsuC">
+    <meta property="og:url" content="<%= request.url %>">
+    <meta property="og:title" content="<%= full_title(yield(:title)) %>">
+    <meta property="og:description" content="「他大学の番発を見に行きたい！」「今度番発をやるから見に来て欲しい！」という方達のための番発+αイベント情報サイトです。">
+    <meta property="og:image" content="<%= asset_url('twitter_card/logo.png') %>">
+
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
