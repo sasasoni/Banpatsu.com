@@ -1,5 +1,12 @@
 class User < ApplicationRecord
   has_many :events, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship",
+    foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :passive_relationships, class_name: "Relationship",
+    foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -72,8 +79,24 @@ class User < ApplicationRecord
   def password_reset_expired?
       # 期限切れの時にtrueを返したい。 sent_at:15 の時、now:16 なら、2.hours.ago: 14, 15 < 14 は false となり、期限切れ"でない"
       reset_sent_at < 2.hours.ago
-    end
+  end
 
+  def following_feed
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Event.where("user_id IN (#{following_ids})", user_id: id)
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
 
   private
 

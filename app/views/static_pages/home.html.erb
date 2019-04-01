@@ -46,8 +46,23 @@
   <div class="row text-center">
     <div class="col-md-12 col-lg-8 mb-5">
       <h3>番発情報をチェック！</h3>
-      <div class="calendar">
+      <div class="calendar padding ">
         <div id="calendar"></div>
+      </div>
+      <div class="text-left">
+        <% if logged_in? %>
+          <%# following users ivents feed %>
+          <h3>フォローしているサークルのイベント情報</h3>
+          <% if @following_events.any? %>
+            <ul class="events mb-3">
+              <%= render @following_events %>
+            </ul>
+            <%= link_to "もっと見る", events_following_user_path(current_user) %>
+          <% else %>
+            <h5>サークルをフォローすると直近のイベント情報をここに表示できます</h5>
+            <%= link_to "サークルを探す", users_path %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-12 col-lg-4 text-left">

@@ -72,4 +72,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "should view following" do
+    get following_user_path(@user)
+    assert_template 'shared/_stats'
+  end
+
+  test "should view followers" do
+    get followers_user_path(@user)
+    assert_template 'shared/_stats'
+  end
 end

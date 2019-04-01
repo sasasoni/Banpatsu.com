@@ -1,0 +1,13 @@
+<% provide(:title, "Following Events") %>
+<h1 class="my-3">
+  フォローしているサークルのイベント情報
+</h1>
+<% if @following_events.any? %>
+  <%= will_paginate @following_events %>
+  <ul class="events mb-3">
+    <%= render @following_events %>
+  </ul>
+  <%= will_paginate @following_events %>
+<% else %>
+  <h5>まだユーザーをフォローしていません。</h5>
+<% end %>

@@ -176,6 +176,7 @@ input {
 
 .users,.events{
   list-style: none;
+  padding: 0;
   margin: 0;
   li {
     overflow: auto;
@@ -242,4 +243,43 @@ input {
 .contact-text a{
   font-size: 1.5rem;
   margin-left: 5px;
+}
+
+// stats
+.stats{
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a{
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid #b4b4b4;
+    color: gray;
+    &:first-child{
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover{
+      text-decoration: none;
+      color: #2b5cff;
+    }
+  }
+  strong{
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
 }

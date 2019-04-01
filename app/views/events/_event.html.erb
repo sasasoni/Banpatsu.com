@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">
-        <%= event.title %>
+        <%= link_to event.title, event %>
         <% if current_user?(event.user) %>
           <small>
             <%= link_to "Edit", edit_event_path(event) %> | 
@@ -18,8 +18,7 @@
       </h6>
       <h6 class="card-subtitle mb-2 text-muted">by <%= link_to event.user.circle_name, event.user %><%= gravatar_for(event.user, size: 30) %></h6>
       <p class="card-text">
-        <%= truncate event.description, length: 80 %><br>
-        <%= link_to "詳細はこちら", event %>
+        <%= truncate event.description, length: 80 %>
       </p>
       <p class="card-text">
         開始日: <%= event.start_date.strftime("%Y/%m/%d %H:%M") %> ~ 

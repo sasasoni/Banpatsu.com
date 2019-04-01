@@ -23,5 +23,6 @@ module SasaApp
       ErrorsController.action(:show).call(env)
     end
     # config.consider_all_requests_local = false
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

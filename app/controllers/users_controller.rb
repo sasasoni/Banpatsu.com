@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :events_following]
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @user = User.find(params[:id])
     @events = @user.events.most_recent.paginate(page: params[:page], per_page: 10)
     redirect_to root_url and return unless @user.activated?
+    # unless @user.activated?
+    #   redirect_to root_url
+    #   return
+    # end
   end
 
   def new
@@ -54,6 +58,26 @@ class UsersController < ApplicationController
     @users = User.search(params[:q_user]).paginate(page: params[:page], per_page: 10)
   end
 
+  def following
+    @title = "フォローリスト"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page], per_page: 10)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page], per_page: 10)
+    render 'show_follow'
+  end
+
+  def events_following
+    user = User.find(params[:id])
+    @following_events = user.following_feed.
+      nearest.paginate(page: params[:page], per_page: 10)
+  end
+  
   private
     
     def user_params

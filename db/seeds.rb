@@ -12,13 +12,14 @@ User.create!(
   email: "example@railstutorial.org",
   password: "foobar",
   password_confirmation: "foobar",
+  twitter_name: "TwitterDev",
   admin: true,
   activated: true,
   activated_at: Time.zone.now
 )
 
 99.times do |n|
-  name = Faker::Name.name
+  name = Faker::Name.name + "-#{n+1}"
   circle_name = name + "\'s Club"
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -45,3 +46,10 @@ users = User.order(:created_at).take(6)
     )
   end
 end
+
+users = User.all
+user = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
