@@ -94,6 +94,9 @@ class UsersController < ApplicationController
     end
 
     def correct_user
+      # GET   /users/:id/edit
+      # PATCH /users/:id
+      # GET   /users/:id/events_following
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user)
     end
