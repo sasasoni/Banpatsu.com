@@ -15,9 +15,9 @@
   <% if current_user?(@user) %>
     <a href="<%= events_following_user_path(@user) %>">
       <strong class="stat">
-        <%= @user.following_feed.count %>
+        <%= @user.following_feed.nearest.count %>
       </strong>
-      recent_events
+      recent events
     </a>
   <% end %>
 </div>
