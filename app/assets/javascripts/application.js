@@ -147,7 +147,6 @@ $(document).on('turbolinks:load', function () {
 
     $('#calendar').fullCalendar({
       events: '/events/calendar.json',
-      titleFormat: 'YYYY年 M月',
       dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
       header: {
         left: 'month,agendaWeek,agendaDay',
@@ -168,6 +167,17 @@ $(document).on('turbolinks:load', function () {
       timeFormat: "HH:mm",
       eventColor: '#63ceef',
       eventTextColor: '#000000',
+      views: {
+        month: {
+          titleFormat: 'YYYY年 M月',
+        },
+        agendaWeek: {
+          titleFormat: 'YYYY年',
+        },
+        agendaDay: {
+          titleFormat: 'YYYY年 M月 DD日',
+        },
+      },
     });
   }
 });
