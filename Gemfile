@@ -11,7 +11,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Bootstrapの日本語版honokaはgemではなくassets内のbootstrap.min.js bootstrap.min.cssを利用しているため、gem bootstrap/honoka-railsは不要
-gem 'bootstrap', '~> 4.3.1'
+# gem 'bootstrap', '~> 4.3.1'
 # gem 'honoka-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,7 +35,7 @@ gem 'momentjs-rails'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker', '~> 1.9.3'
-gem 'will_paginate', '3.1.6'
+# gem 'will_paginate', '3.1.6'
 gem 'will_paginate-bootstrap4'
 
 gem 'rinku'
