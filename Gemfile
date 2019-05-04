@@ -10,8 +10,9 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Bootstrapの日本語版honokaはgemではなくassets内のbootstrap.min.js bootstrap.min.cssを利用しているため、gem bootstrap/honoka-railsは不要
-# gem 'bootstrap', '~> 4.3.1'
+# Bootstrapの日本語版honokaはgemではなくassets内のbootstrap.min.js bootstrap.min.cssを利用しているため、gem honoka-railsは不要
+# popper.jsを利用するためbootstrapを入れる
+gem 'bootstrap', '~> 4.3.1'
 # gem 'honoka-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
